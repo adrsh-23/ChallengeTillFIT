@@ -1,7 +1,7 @@
 import 'package:ctf_app/pages/signUpAndLoginPage/function/inputFieldDecorate.dart';
-import 'package:ctf_app/pages/signUpAndLoginPage/utils/variables.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/widget/gender.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/widget/signInButton.dart';
+import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
