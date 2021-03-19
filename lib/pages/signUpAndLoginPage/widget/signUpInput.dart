@@ -6,12 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 String gender = "M";
-const inactiveColor = Colors.white;
-const activeColor = Color.fromRGBO(211, 32, 132, 1.0);
-enum genderType { male, female }
-enum operationType { plus, minus }
-enum valueReq { weight, age }
-genderType currentGender;
 
 class SignUpInput extends StatefulWidget {
   @override
@@ -23,8 +17,7 @@ class _SignUpInputState extends State<SignUpInput> {
   String name;
   String email;
   String password;
-  String phoneNo;
-  String collegeName;
+  String gender;
   signUp() {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -35,7 +28,6 @@ class _SignUpInputState extends State<SignUpInput> {
         'email': email,
         'uid': signedUser.user.uid,
         'gender': gender,
-        'collegeName': collegeName,
         'profilePic': 'https://i.redd.it/v0caqchbtn741.jpg',
       });
     });
@@ -75,115 +67,12 @@ class _SignUpInputState extends State<SignUpInput> {
           const SizedBox(
             height: 10,
           ),
-          TextField(
-            decoration: inputFieldDecorate("Phone no"),
-            keyboardType: TextInputType.number,
-            onChanged: (value) => phoneNo = value,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextField(
-            decoration: inputFieldDecorate("College Name"),
-            onChanged: (value) => collegeName = value,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
           LogInButton(
             label: "Sign Up",
             onPressed: () => signUp(),
           ),
         ],
       ),
-    );
-  }
-}
-
-class GenderBox extends StatefulWidget {
-  @override
-  _GenderBoxState createState() => _GenderBoxState();
-}
-
-class _GenderBoxState extends State<GenderBox> {
-  @override
-  Widget build(BuildContext context) {
-    var FontAwesomeIcons;
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 25.0, // soften the shadow
-                  spreadRadius: 1.0, //extend the shadow
-                  offset: Offset(
-                    2.0, // Move to right 10  horizontally
-                    2.0, // Move to bottom 10 Vertically
-                  ),
-                )
-              ],
-            ),
-            child: GestureDetector(
-              onTap: () => setState(() {
-                currentGender = genderType.male;
-                gender = "M";
-                print(gender);
-              }),
-              child: Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: ReuseContainer(
-                    colour: currentGender == genderType.male
-                        ? activeColor
-                        : inactiveColor,
-                    getChild: ReuseIcons(
-                      label: "MALE",
-                      getIcon: Icon(
-                        FontAwesomeIcons.mars,
-                        size: 79,
-                      ),
-                    )),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 25.0, // soften the shadow
-                spreadRadius: 1.0, //extend the shadow
-                offset: Offset(
-                  2.0, // Move to right 10  horizontally
-                  2.0, // Move to bottom 10 Vertically
-                ),
-              )
-            ]),
-            child: GestureDetector(
-              onTap: () => setState(() {
-                currentGender = genderType.female;
-                gender = "F";
-                print(gender);
-              }),
-              child: Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: ReuseContainer(
-                  colour: currentGender == genderType.female
-                      ? activeColor
-                      : inactiveColor,
-                  getChild: ReuseIcons(
-                    label: "FEMALE",
-                    getIcon: Icon(FontAwesomeIcons.venus, size: 79),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

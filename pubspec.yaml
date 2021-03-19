@@ -33,7 +33,6 @@ dependencies:
   firebase_storage:  ^8.0.0
   firebase_core: ^1.0.0
   image_picker:  ^0.7.2
-  esys_flutter_share: ^1.0.2
   flutter_custom_clippers: ^1.1.2
   image: ^3.0.1
   path_provider: ^1.1.0
