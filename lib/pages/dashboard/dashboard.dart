@@ -46,19 +46,19 @@ class _DashboardState extends State<Dashboard> {
                     subtitle: Column(
                       children: [
                         if (userData['type'] == 1)
-                          Text(userData['tweet'],
+                          Text(userData['text'],
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold)),
-                        if (userData['type'] == 2)
+                        if (userData['text'] == 2)
                           Image(
                             image: getImage(userData['image']),
                           ),
                         if (userData['type'] == 3)
                           Column(
                             children: [
-                              Text(userData['tweet'],
+                              Text(userData['text'],
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
