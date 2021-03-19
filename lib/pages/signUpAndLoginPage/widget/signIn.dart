@@ -30,7 +30,7 @@ class _LogInState extends State<LogIn> {
       } else {
         setState(() {
           // invalid = false;
-          Navigator.pushNamed(context, "docListPage");
+          Navigator.pushNamed(context, "homePage");
         });
       }
     });

@@ -1,3 +1,4 @@
+import 'package:ctf_app/homePage/homePage.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/signUpPage.dart';
 import 'package:flutter/material.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/loginPage.dart';
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "loginPage": (context) => Login(),
         "signupPage": (context) => SignUp(),
+        "homePage": (context) => HomePage(),
       },
+      initialRoute: 'homePage',
     );
   }
 }
