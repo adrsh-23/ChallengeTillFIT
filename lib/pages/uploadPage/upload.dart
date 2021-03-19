@@ -56,7 +56,7 @@ class _UploadPageState extends State<UploadPage> {
     return imageUrl;
   }
 
-  postTweet() async {
+  postText() async {
     setState(() {
       uploading = true;
     });
@@ -66,12 +66,12 @@ class _UploadPageState extends State<UploadPage> {
     var allDoc = await userPosts.get();
     int length = allDoc.docs.length;
     if (text != '' && imagePath == null) {
-      userPosts.doc('Tweet $length').set({
+      userPosts.doc('text $length').set({
         'username': userDoc['username'],
         'profilePic': userDoc['profilePic'],
         'uid': firebaseUser.uid,
-        'id': 'Tweet $length',
-        'tweet': text,
+        'id': 'text $length',
+        'text': text,
         'likes': [],
         'commentCount': 0,
         'shares': 0,
@@ -79,14 +79,14 @@ class _UploadPageState extends State<UploadPage> {
       });
       Navigator.pop(context);
     } else if (text == '' && imagePath != null) {
-      String imageUrl = await uploadImage('Tweet $length');
-      userPosts.doc('Tweet $length').set({
+      String imageUrl = await uploadImage('text $length');
+      userPosts.doc('text $length').set({
         'username': userDoc['username'],
         'profilePic': userDoc['profilePic'],
         'uid': firebaseUser.uid,
-        'id': 'Tweet $length',
+        'id': 'text $length',
         'image': imageUrl,
-        'tweet': '',
+        'text': '',
         'likes': [],
         'commentCount': 0,
         'shares': 0,
@@ -94,13 +94,13 @@ class _UploadPageState extends State<UploadPage> {
       });
       Navigator.pop(context);
     } else {
-      String imageUrl = await uploadImage('Tweet $length');
-      userPosts.doc('Tweet $length').set({
+      String imageUrl = await uploadImage('text $length');
+      userPosts.doc('text $length').set({
         'username': userDoc['username'],
         'profilePic': userDoc['profilePic'],
         'uid': firebaseUser.uid,
-        'id': 'Tweet $length',
-        'tweet': text,
+        'id': 'text $length',
+        'text': text,
         'image': imageUrl,
         'likes': [],
         'commentCount': 0,
@@ -164,7 +164,7 @@ class _UploadPageState extends State<UploadPage> {
             ),
             floatingActionButton: FloatingActionButton(
               child: Icon(Icons.publish),
-              onPressed: () => postTweet(),
+              onPressed: () => postText(),
             ),
           );
   }
