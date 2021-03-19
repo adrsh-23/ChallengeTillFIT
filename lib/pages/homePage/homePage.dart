@@ -1,6 +1,7 @@
 import 'package:ctf_app/pages/dashboard/dashboard.dart';
 import 'package:ctf_app/pages/profilePage/profilePage.dart';
 import 'package:ctf_app/pages/uploadPage/upload.dart';
+import 'package:ctf_app/pages/uploadPage/uploadMainPage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static List<Widget> _Page = <Widget>[
     Dashboard(),
-    UploadPage(),
+    UploadandChallenge(),
     Text('notification Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     ProfilePage(),

@@ -72,9 +72,6 @@ class _UploadPageState extends State<UploadPage> {
         'uid': firebaseUser.uid,
         'id': 'text $length',
         'text': text,
-        'likes': [],
-        'commentCount': 0,
-        'shares': 0,
         'type': 1,
       });
       Navigator.pop(context);
@@ -87,9 +84,6 @@ class _UploadPageState extends State<UploadPage> {
         'id': 'text $length',
         'image': imageUrl,
         'text': '',
-        'likes': [],
-        'commentCount': 0,
-        'shares': 0,
         'type': 2,
       });
       Navigator.pop(context);
@@ -102,9 +96,6 @@ class _UploadPageState extends State<UploadPage> {
         'id': 'text $length',
         'text': text,
         'image': imageUrl,
-        'likes': [],
-        'commentCount': 0,
-        'shares': 0,
         'type': 3,
       });
       Navigator.pop(context);

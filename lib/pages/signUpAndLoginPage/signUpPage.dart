@@ -1,3 +1,4 @@
+import 'package:ctf_app/pages/signUpAndLoginPage/widget/signUpInput.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,6 +16,7 @@ class SignUp extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              SignUpInput(),
             ],
           ),
         ),

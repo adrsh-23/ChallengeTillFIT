@@ -27,11 +27,15 @@ class _DashboardState extends State<Dashboard> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("YOLO"),
+        centerTitle: true,
+      ),
       body: StreamBuilder(
         stream: userPosts.snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
           return ListView.builder(
               itemCount: snapshot.data.docs.length,
@@ -39,9 +43,13 @@ class _DashboardState extends State<Dashboard> {
                 DocumentSnapshot userData = snapshot.data.docs[index];
                 return Card(
                   child: ListTile(
-                    title: userData['username'],
+                    title: Text(
+                      userData['username'],
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
                     leading: CircleAvatar(
-                      backgroundImage: getImage(userData['image']),
+                      backgroundImage: getImage(userData['profilePic']),
                     ),
                     subtitle: Column(
                       children: [
