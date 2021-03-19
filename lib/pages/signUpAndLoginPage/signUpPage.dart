@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sppu_app/signUpAndLoginPage/widget/signUpDesign.dart';
-import 'package:sppu_app/signUpAndLoginPage/widget/signUpInput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 main() => runApp(MaterialApp(
@@ -17,9 +15,6 @@ class SignUp extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SignUpDesignInput(),
-              GenderBox(),
-              SignUpInput(),
             ],
           ),
         ),
