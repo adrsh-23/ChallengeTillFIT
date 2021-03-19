@@ -1,5 +1,5 @@
+import 'package:ctf_app/pages/signUpAndLoginPage/widget/design.dart';
 import 'package:flutter/material.dart';
-import 'package:sppu_app/signUpAndLoginPage/widget/design.dart';
 
 class SignUpDesignInput extends StatelessWidget {
   const SignUpDesignInput({

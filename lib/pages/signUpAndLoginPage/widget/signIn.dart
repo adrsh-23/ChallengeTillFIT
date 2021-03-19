@@ -1,5 +1,5 @@
+import 'package:ctf_app/pages/signUpAndLoginPage/function/inputFieldDecorate.dart';
 import 'package:flutter/material.dart';
-import 'package:sppu_app/signUpAndLoginPage/function/inputFieldDecorate.dart';
 import './forgotButton.dart';
 import './signInButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';

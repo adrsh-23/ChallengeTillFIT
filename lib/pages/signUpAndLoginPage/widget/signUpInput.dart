@@ -1,10 +1,9 @@
+import 'package:ctf_app/pages/signUpAndLoginPage/function/inputFieldDecorate.dart';
+import 'package:ctf_app/pages/signUpAndLoginPage/utils/variables.dart';
+import 'package:ctf_app/pages/signUpAndLoginPage/widget/gender.dart';
+import 'package:ctf_app/pages/signUpAndLoginPage/widget/signInButton.dart';
 import 'package:flutter/material.dart';
-import 'package:sppu_app/signUpAndLoginPage/function/inputFieldDecorate.dart';
-import 'package:sppu_app/signUpAndLoginPage/utils/variables.dart';
-import 'package:sppu_app/signUpAndLoginPage/widget/signInButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sppu_app/signUpAndLoginPage/widget/gender.dart';
 
 String gender = "M";
 const inactiveColor = Colors.white;
@@ -109,6 +108,7 @@ class GenderBox extends StatefulWidget {
 class _GenderBoxState extends State<GenderBox> {
   @override
   Widget build(BuildContext context) {
+    var FontAwesomeIcons;
     return Row(
       children: [
         Expanded(
