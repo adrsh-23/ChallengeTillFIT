@@ -1,3 +1,4 @@
+import 'package:ctf_app/pages/challengeUser/challengeUserPage.dart';
 import 'package:ctf_app/pages/homePage/homePage.dart';
 import 'package:ctf_app/pages/profilePage/profilePage.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/signUpPage.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         "homePage": (context) => HomePage(),
         "upload": (context) => UploadPage(),
         "profilePage": (context) => ProfilePage(),
+        "challengeUser": (context) => ChallengeUser(),
       },
       initialRoute: 'loginPage',
     );

@@ -13,8 +13,8 @@ class _SignUpState extends State<SignUp> {
   String email;
   String password;
 
-  signUp() {
-    FirebaseAuth.instance
+  signUp() async {
+    await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((signedUser) {
       usersCollection.doc(signedUser.user.uid).set({
