@@ -95,9 +95,6 @@ class _ViewUserPageState extends State<ViewUserPage> {
                               radius: 60,
                               backgroundImage: NetworkImage(profilePic),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
                             Text(
                               username,
                               style: TextStyle(
