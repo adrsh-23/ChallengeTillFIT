@@ -13,8 +13,7 @@ class _SearchState extends State<Search> {
   String userInput;
   Future<QuerySnapshot> searchUserResult;
   searchUsers(String s) {
-    var users =
-        usersCollection.where('username', isGreaterThanOrEqualTo: s).get();
+    var users = usersCollection.where('username', isEqualTo: s).get();
     setState(() {
       searchUserResult = users;
     });
