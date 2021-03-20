@@ -2,6 +2,7 @@ import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:timeago/timeago.dart' as tAgo;
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -52,15 +53,32 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   Stack(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     children: [
                       Container(
                         width: double.infinity,
-                        height: MediaQuery.of(context).size.height / 3,
-                        color: Colors.red,
+                        height: 2 * MediaQuery.of(context).size.height / 5,
+                        color: Colors.tealAccent,
                       ),
                       Column(
                         children: [
+                          Container(
+                            height: MediaQuery.of(context).padding.top,
+                            color: Colors.tealAccent,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                  icon: Icon(Icons.edit), onPressed: () {}),
+                              IconButton(
+                                  icon: Icon(Icons.logout),
+                                  onPressed: () async {
+                                    await FirebaseAuth.instance.signOut();
+                                    Navigator.pushNamed(context, "loginPage");
+                                  }),
+                            ],
+                          ),
                           CircleAvatar(
                             radius: 60,
                             backgroundImage: NetworkImage(profilePic),
@@ -71,46 +89,27 @@ class _ProfilePageState extends State<ProfilePage> {
                           Text(
                             username,
                             style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 1,
+                            color: Colors.black,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "User Accomplishments",
+                            style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ],
                       )
                     ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text("Friends"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MaterialButton(
-                        color: Colors.red,
-                        onPressed: () => null,
-                        child: Text(
-                          "Edit Profile",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      MaterialButton(
-                        color: Colors.red,
-                        onPressed: () async {
-                          await FirebaseAuth.instance.signOut();
-                          Navigator.pushNamed(context, "loginPage");
-                        },
-                        child: Text(
-                          "Log Out",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "User Accomplishments",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   StreamBuilder(
                       stream: userStream,
@@ -127,46 +126,71 @@ class _ProfilePageState extends State<ProfilePage> {
                               DocumentSnapshot userDoc =
                                   snapshot.data.docs[index];
                               return Card(
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    backgroundImage:
-                                        getImage(userDoc['profilePic']),
-                                  ),
-                                  title: Text(userDoc['username'],
-                                      style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold)),
-                                  subtitle: Column(
-                                    children: [
-                                      if (userDoc['type'] == 1)
-                                        Text(userDoc['text'],
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold)),
-                                      if (userDoc['type'] == 2)
-                                        Image(
+                                color: Colors.tealAccent.withOpacity(0.5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ListTile(
+                                      tileColor: Colors.transparent,
+                                      title: Text(
+                                        userDoc['username'],
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      leading: CircleAvatar(
+                                        backgroundImage:
+                                            getImage(userDoc['profilePic']),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (userDoc['type'] == 1 ||
+                                        userDoc['type'] == 3)
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Text(
+                                          userDoc['text'],
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (userDoc['type'] == 2 ||
+                                        userDoc['type'] == 3)
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image(
                                           image: getImage(userDoc['image']),
                                         ),
-                                      if (userDoc['type'] == 3)
-                                        Column(
-                                          children: [
-                                            Text(userDoc['text'],
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            Image(
-                                              image: getImage(userDoc['image']),
-                                            )
-                                          ],
-                                        ),
-                                      const SizedBox(
-                                        height: 10,
                                       ),
-                                    ],
-                                  ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Text(
+                                            tAgo
+                                                .format(userDoc['timeStamp']
+                                                    .toDate())
+                                                .toString(),
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey[300]),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               );
                             });
