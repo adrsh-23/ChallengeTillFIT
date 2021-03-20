@@ -95,101 +95,109 @@ class _SignUpState extends State<SignUp> {
         ),
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                TextField(
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: _usernameBgColor,
-                    filled: true,
-                    labelText: 'Username',
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    border: InputBorder.none,
-                  ),
-                  focusNode: _usernameTextFieldFocus,
-                  autocorrect: false,
-                  onChanged: (value) => username = value,
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                cursorColor: Colors.white,
+                decoration: InputDecoration(
+                  fillColor: _usernameBgColor,
+                  filled: true,
+                  labelText: 'Username',
+                  labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                  border: InputBorder.none,
                 ),
-                const SizedBox(
-                  height: 10,
+                focusNode: _usernameTextFieldFocus,
+                autocorrect: false,
+                onChanged: (value) => username = value,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                cursorColor: Colors.white,
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                decoration: InputDecoration(
+                  fillColor: _nameBgColor,
+                  filled: true,
+                  labelText: 'Name',
+                  labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                  border: InputBorder.none,
                 ),
-                TextField(
-                  cursorColor: Colors.white,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  decoration: InputDecoration(
-                    fillColor: _nameBgColor,
-                    filled: true,
-                    labelText: 'Name',
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    border: InputBorder.none,
-                  ),
-                  focusNode: _nameTextFieldFocus,
-                  keyboardType: TextInputType.emailAddress,
-                  autocorrect: false,
-                  onChanged: (value) => name = value,
+                focusNode: _nameTextFieldFocus,
+                keyboardType: TextInputType.emailAddress,
+                autocorrect: false,
+                onChanged: (value) => name = value,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  fillColor: _emailBgColor,
+                  filled: true,
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                  border: InputBorder.none,
                 ),
-                const SizedBox(
-                  height: 10,
+                focusNode: _emailTextFieldFocus,
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                cursorColor: Colors.white,
+                onChanged: (value) => email = value,
+                autocorrect: false,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                // decoration: inputFieldDecorate("Password"),
+                decoration: InputDecoration(
+                  fillColor: _passwordBgColor,
+                  filled: true,
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
+                  border: InputBorder.none,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    fillColor: _emailBgColor,
-                    filled: true,
-                    labelText: 'Email',
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    border: InputBorder.none,
-                  ),
-                  focusNode: _emailTextFieldFocus,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  cursorColor: Colors.white,
-                  onChanged: (value) => email = value,
-                  autocorrect: false,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextField(
-                  // decoration: inputFieldDecorate("Password"),
-                  decoration: InputDecoration(
-                    fillColor: _passwordBgColor,
-                    filled: true,
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
-                    border: InputBorder.none,
-                  ),
-                  focusNode: _passwordTextFieldFocus,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  cursorColor: Colors.white,
-                  obscureText: true,
-                  onChanged: (value) => password = value,
-                  autocorrect: false,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: ElevatedButton(
+                focusNode: _passwordTextFieldFocus,
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                cursorColor: Colors.white,
+                obscureText: true,
+                onChanged: (value) => password = value,
+                autocorrect: false,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: ElevatedButton(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                     child: Text(
                       'Sign Up',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    onPressed: () {
-                      signUp();
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
-                        (states) => Colors.tealAccent,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
+                  onPressed: () {
+                    signUp();
+                  },
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (states) => Colors.tealAccent,
+                      ),
+                      shape: MaterialStateProperty.resolveWith((states) =>
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)))),
+                ),
+              )
+            ],
           ),
         ),
       ),
