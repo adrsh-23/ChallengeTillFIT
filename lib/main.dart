@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         "homePage": (context) => HomePage(),
         "upload": (context) => UploadPage(),
         "profilePage": (context) => ProfilePage(),
-        "challengeUser": (context) => ChallengeUser(),
       },
       initialRoute: 'loginPage',
     );
