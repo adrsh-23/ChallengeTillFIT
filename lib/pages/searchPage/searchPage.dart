@@ -3,6 +3,7 @@ import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image/image.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -20,18 +21,18 @@ class _SearchState extends State<Search> {
   }
 
   FocusNode _searchTextFieldFocus = FocusNode();
-  Color _searchBgColor = Colors.transparent;
+  var searchBgColor = Colors.transparent;
   @override
   void initState() {
     // TODO: implement initState
     _searchTextFieldFocus.addListener(() {
       if (_searchTextFieldFocus.hasFocus) {
         setState(() {
-          _searchBgColor = Colors.grey.withOpacity(0.4);
+          searchBgColor = Colors.grey.withOpacity(0.4);
         });
       } else {
         setState(() {
-          _searchBgColor = Colors.transparent;
+          searchBgColor = Colors.transparent;
         });
       }
     });
@@ -43,13 +44,17 @@ class _SearchState extends State<Search> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.tealAccent,
+        leading: Icon(
+          Icons.search,
+          color: Colors.black,
+        ),
         title: TextFormField(
           onChanged: (value) => userInput = value,
           decoration: InputDecoration(
             hintText: "Search For Users",
             filled: true,
             border: InputBorder.none,
-            fillColor: _searchBgColor,
+            fillColor: searchBgColor,
           ),
           focusNode: _searchTextFieldFocus,
           onFieldSubmitted: searchUsers,
@@ -77,8 +82,10 @@ class _SearchState extends State<Search> {
                     itemBuilder: (BuildContext context, int index) {
                       DocumentSnapshot user = snapshot.data.docs[index];
                       return Card(
+                        color: Colors.transparent,
                         elevation: 10.0,
                         child: ListTile(
+                          tileColor: Colors.tealAccent,
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(user['profilePic']),
                           ),
