@@ -30,6 +30,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: Text("YOLO"),
         centerTitle: true,
+        leading: Icon(Icons.food_bank),
       ),
       body: StreamBuilder(
         stream: userPosts.snapshots(),

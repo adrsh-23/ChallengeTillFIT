@@ -1,4 +1,5 @@
 import 'package:ctf_app/pages/homePage/homePage.dart';
+import 'package:ctf_app/pages/profilePage/profilePage.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/signUpPage.dart';
 import 'package:ctf_app/pages/uploadPage/upload.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         "signupPage": (context) => SignUp(),
         "homePage": (context) => HomePage(),
         "upload": (context) => UploadPage(),
+        "profilePage": (context) => ProfilePage(),
       },
       initialRoute: 'loginPage',
     );

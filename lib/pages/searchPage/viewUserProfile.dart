@@ -3,31 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class ProfilePage extends StatefulWidget {
+class ViewUserPage extends StatefulWidget {
+  ViewUserPage({this.userId});
+  final String userId;
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ViewUserPageState createState() => _ViewUserPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  String userId;
+class _ViewUserPageState extends State<ViewUserPage> {
   String username;
   String profilePic = '';
   bool dataPresent = false;
   var userStream;
   initState() {
     super.initState();
-    String userId = FirebaseAuth.instance.currentUser.uid;
     setState(() {
-      userId = userId;
-      userStream = userPosts.where('uid', isEqualTo: userId).snapshots();
+      userStream = userPosts.where('uid', isEqualTo: widget.userId).snapshots();
     });
     getCurrentUserInfo();
   }
 
   getCurrentUserInfo() async {
-    var firebaseUser = FirebaseAuth.instance.currentUser;
-    DocumentSnapshot userDoc =
-        await usersCollection.doc(firebaseUser.uid).get();
+    DocumentSnapshot userDoc = await usersCollection.doc(widget.userId).get();
     setState(() {
       username = userDoc['username'];
       profilePic = userDoc['profilePic'];
@@ -47,6 +44,13 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("User Profile"),
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back_ios),
+          onTap: () => Navigator.pop(context),
+        ),
+      ),
       body: dataPresent
           ? SingleChildScrollView(
               child: Column(
@@ -81,30 +85,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 30,
                   ),
                   Text("Friends"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MaterialButton(
-                        color: Colors.red,
-                        onPressed: () => null,
-                        child: Text(
-                          "Edit Profile",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      MaterialButton(
-                        color: Colors.red,
-                        onPressed: () async {
-                          await FirebaseAuth.instance.signOut();
-                          Navigator.pushNamed(context, "loginPage");
-                        },
-                        child: Text(
-                          "Log Out",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  ),
                   const SizedBox(
                     height: 20,
                   ),
