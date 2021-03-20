@@ -1,4 +1,5 @@
 import 'package:ctf_app/pages/dashboard/dashboard.dart';
+import 'package:ctf_app/pages/notificationPage/notificationPage.dart';
 import 'package:ctf_app/pages/profilePage/profilePage.dart';
 import 'package:ctf_app/pages/searchPage/searchPage.dart';
 import 'package:ctf_app/pages/uploadPage/upload.dart';
@@ -16,8 +17,7 @@ class _HomePageState extends State<HomePage> {
     Dashboard(),
     Search(),
     UploadandChallenge(),
-    Text('notification Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    NotificationPage(),
     ProfilePage(),
   ];
   void changePage(int index) {

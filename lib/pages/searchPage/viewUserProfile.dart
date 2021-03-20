@@ -2,7 +2,6 @@ import 'package:ctf_app/pages/challengeUser/challengeUserPage.dart';
 import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class ViewUserPage extends StatefulWidget {
   ViewUserPage({this.userId});
