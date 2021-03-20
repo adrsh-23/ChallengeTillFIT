@@ -130,15 +130,6 @@ class _UploadPageState extends State<UploadPage> {
                 ),
               ),
               centerTitle: true,
-              actions: [
-                GestureDetector(
-                  child: Icon(
-                    Icons.image,
-                    color: Colors.black,
-                  ),
-                  onTap: () => optionsDialog(),
-                ),
-              ],
             ),
             body: Container(
               padding: EdgeInsets.all(5),
