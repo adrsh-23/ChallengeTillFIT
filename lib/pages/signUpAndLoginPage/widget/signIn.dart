@@ -27,7 +27,7 @@ class _LogInState extends State<LogIn> {
       } else {
         setState(() {
           // invalid = false;
-          Navigator.pushNamed(context, "homePage");
+          Navigator.popAndPushNamed(context, "homePage");
         });
       }
     });

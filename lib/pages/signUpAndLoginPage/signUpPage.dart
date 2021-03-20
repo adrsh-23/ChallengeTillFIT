@@ -13,7 +13,7 @@ class _SignUpState extends State<SignUp> {
   String email;
   String password;
 
-  signUp() async {
+  signUp() {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((signedUser) {
@@ -21,6 +21,8 @@ class _SignUpState extends State<SignUp> {
         'username': username,
         'name': name,
         'email': email,
+        'uid': signedUser.user.uid,
+        'profilePic': 'https://i.redd.it/v0caqchbtn741.jpg',
       });
     });
     Navigator.popAndPushNamed(context, 'homePage');
