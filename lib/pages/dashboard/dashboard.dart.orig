@@ -33,7 +33,6 @@ class _DashboardState extends State<Dashboard> {
           "Home",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        leading: Container(),
         centerTitle: true,
         backgroundColor: Colors.tealAccent,
       ),
@@ -45,10 +44,8 @@ class _DashboardState extends State<Dashboard> {
           }
           return ListView.builder(
               itemCount: snapshot.data.docs.length,
-              reverse: true,
               itemBuilder: (BuildContext context, int index) {
                 DocumentSnapshot userData = snapshot.data.docs[index];
-
                 return Card(
                   color: Colors.tealAccent.withOpacity(0.5),
                   child: Column(
@@ -107,6 +104,15 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ],
                       ),
+                      //   ),
+                      // ),
+                      if (userData['type'] == 2 || userData['type'] == 3)
+                        Container(
+                          // child: NetworkImage(userData['image'].toString()),
+                          child: Image(
+                            image: getImage(userData['image']),
+                          ),
+                        )
                     ],
                   ),
                 );

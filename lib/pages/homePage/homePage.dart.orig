@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         onTap: changePage,
         type: BottomNavigationBarType.shifting,
         showUnselectedLabels: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.red,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -53,6 +53,14 @@ class _HomePageState extends State<HomePage> {
               size: 30,
             ),
             label: 'search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add,
+              color: Colors.tealAccent,
+              size: 30,
+            ),
+            label: 'add',
           ),
           BottomNavigationBarItem(
             icon: Icon(
