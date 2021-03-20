@@ -60,41 +60,39 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: MediaQuery.of(context).size.height / 3,
                         color: Colors.tealAccent,
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).padding.top,
-                            color: Colors.tealAccent,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                  icon: Icon(Icons.edit), onPressed: () {}),
-                              IconButton(
-                                  icon: Icon(Icons.logout),
-                                  onPressed: () async {
-                                    await FirebaseAuth.instance.signOut();
-                                    Navigator.pushNamed(context, "loginPage");
-                                  }),
-                            ],
-                          ),
-                          CircleAvatar(
-                            radius: 60,
-                            backgroundImage: NetworkImage(profilePic),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            username,
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                        ],
+                      Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).padding.top,
+                              color: Colors.tealAccent,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                    icon: Icon(Icons.edit), onPressed: () {}),
+                                IconButton(
+                                    icon: Icon(Icons.logout),
+                                    onPressed: () async {
+                                      await FirebaseAuth.instance.signOut();
+                                      Navigator.pushNamed(context, "loginPage");
+                                    }),
+                              ],
+                            ),
+                            CircleAvatar(
+                              radius: 60,
+                              backgroundImage: NetworkImage(profilePic),
+                            ),
+                            Text(
+                              username,
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
