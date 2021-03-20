@@ -73,6 +73,7 @@ class _UploadPageState extends State<UploadPage> {
         'id': 'text $length',
         'text': text,
         'type': 1,
+        'timeStamp': DateTime.now(),
       });
       Navigator.pop(context);
     } else if (text == '' && imagePath != null) {
@@ -85,6 +86,7 @@ class _UploadPageState extends State<UploadPage> {
         'image': imageUrl,
         'text': '',
         'type': 2,
+        'timeStamp': DateTime.now(),
       });
       Navigator.pop(context);
     } else {
@@ -97,6 +99,7 @@ class _UploadPageState extends State<UploadPage> {
         'text': text,
         'image': imageUrl,
         'type': 3,
+        'timeStamp': DateTime.now(),
       });
       Navigator.pop(context);
     }

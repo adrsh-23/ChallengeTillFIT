@@ -40,6 +40,7 @@ class _DashboardState extends State<Dashboard> {
           }
           return ListView.builder(
               itemCount: snapshot.data.docs.length,
+              reverse: true,
               itemBuilder: (BuildContext context, int index) {
                 DocumentSnapshot userData = snapshot.data.docs[index];
                 return Card(
