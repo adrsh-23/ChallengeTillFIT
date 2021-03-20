@@ -19,20 +19,50 @@ class _SearchState extends State<Search> {
     });
   }
 
+  FocusNode _searchTextFieldFocus = FocusNode();
+  Color _searchBgColor = Colors.transparent;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _searchTextFieldFocus.addListener(() {
+      if (_searchTextFieldFocus.hasFocus) {
+        setState(() {
+          _searchBgColor = Colors.grey.withOpacity(0.4);
+        });
+      } else {
+        setState(() {
+          _searchBgColor = Colors.transparent;
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.tealAccent,
         title: TextFormField(
           onChanged: (value) => userInput = value,
-          decoration:
-              InputDecoration(hintText: "Search For Users", filled: true),
+          decoration: InputDecoration(
+            hintText: "Search For Users",
+            filled: true,
+            border: InputBorder.none,
+            fillColor: _searchBgColor,
+          ),
+          focusNode: _searchTextFieldFocus,
           onFieldSubmitted: searchUsers,
         ),
       ),
       body: searchUserResult == null
           ? Center(
-              child: Text("Search For Users.."),
+              child: Text(
+                "Search For Users..",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             )
           : FutureBuilder(
               future: searchUserResult,

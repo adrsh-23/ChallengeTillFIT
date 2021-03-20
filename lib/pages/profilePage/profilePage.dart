@@ -96,17 +96,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       )
                     ],
                   ),
-                  Card(
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      alignment: Alignment.center,
-                      color: Colors.tealAccent,
-                      child: Text(
-                        "User Accomplishments",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
+                  Container(
+                    width: double.infinity,
+                    height: 2,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    alignment: Alignment.center,
+                    color: Colors.tealAccent,
+                    child: Text(
+                      "User Accomplishments",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                   StreamBuilder(
