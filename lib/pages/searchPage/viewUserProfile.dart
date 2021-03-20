@@ -1,3 +1,4 @@
+import 'package:ctf_app/pages/challengeUser/challengeUserPage.dart';
 import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -89,7 +90,14 @@ class _ViewUserPageState extends State<ViewUserPage> {
                       "Challenge this user!",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () => null,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ChallengeUser(
+                          userId: widget.userId,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

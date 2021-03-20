@@ -136,12 +136,12 @@ class _UploadPageState extends State<UploadPage> {
                       maxLength: null,
                       maxLines: null,
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 24,
                       ),
                       decoration: InputDecoration(
                           labelText: "Write Something",
                           labelStyle: TextStyle(
-                            fontSize: 30,
+                            fontSize: 29,
                           ),
                           border: InputBorder.none)),
                 ),

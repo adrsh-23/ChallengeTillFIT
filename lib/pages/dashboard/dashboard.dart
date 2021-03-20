@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ctf_app/utils/variables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as tAgo;
 
 class Dashboard extends StatefulWidget {
   @override
@@ -75,9 +76,21 @@ class _DashboardState extends State<Dashboard> {
                                       fontWeight: FontWeight.bold)),
                               Image(
                                 image: getImage(userData['image']),
-                              )
+                              ),
                             ],
                           ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              tAgo
+                                  .format(userData['timeStamp'].toDate())
+                                  .toString(),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
