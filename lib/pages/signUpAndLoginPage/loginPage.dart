@@ -50,12 +50,19 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                'CTF',
+                'CHALLENGE',
                 style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.w900,
                   color: Colors.tealAccent,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
                 ),
+              ),
+              Text(
+                'till FiT',
+                style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white),
               ),
               SizedBox(
                 height: 10,
