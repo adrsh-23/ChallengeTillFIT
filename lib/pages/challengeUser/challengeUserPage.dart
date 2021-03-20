@@ -11,9 +11,18 @@ class ChallengeUser extends StatefulWidget {
 
 class _ChallengeUserState extends State<ChallengeUser> {
   String text;
-  postChallenge() {
+  postChallenge() async {
     var firebaseUser = FirebaseAuth.instance.currentUser.uid;
-    
+    await usersCollection
+        .doc(widget.userId)
+        .collection("challenges")
+        .doc(firebaseUser)
+        .set({
+      'challenged': widget.userId,
+      'challenger': firebaseUser,
+      'timeStamp': DateTime.now(),
+      'challenge': text,
+    });
   }
 
   @override
