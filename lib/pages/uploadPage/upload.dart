@@ -115,49 +115,89 @@ class _UploadPageState extends State<UploadPage> {
           )
         : Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.tealAccent,
               leading: GestureDetector(
-                child: Icon(Icons.arrow_back_ios),
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                ),
                 onTap: () => Navigator.pop(context),
               ),
-              title: Text("Show your Achievement"),
+              title: Text(
+                "Show your Achievement",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
               centerTitle: true,
               actions: [
                 GestureDetector(
-                  child: Icon(Icons.image),
+                  child: Icon(
+                    Icons.image,
+                    color: Colors.black,
+                  ),
                   onTap: () => optionsDialog(),
                 ),
               ],
             ),
-            body: Column(
-              children: [
-                Expanded(
-                  child: TextField(
-                      onChanged: (value) => text = value,
-                      maxLength: null,
-                      maxLines: null,
-                      style: TextStyle(
-                        fontSize: 24,
+            body: Container(
+              padding: EdgeInsets.all(5),
+              child: Column(
+                children: [
+                  imagePath == null
+                      ? Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          child: ElevatedButton(
+                            child: Text(
+                              'Upload Image',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () => optionsDialog(),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith(
+                                (states) => Colors.tealAccent,
+                              ),
+                            ),
+                          ),
+                        )
+                      : MediaQuery.of(context).viewInsets.bottom > 0
+                          ? Container()
+                          : Image(
+                              width: 300,
+                              height: 300,
+                              image: FileImage(imagePath),
+                            ),
+                  TextField(
+                    onChanged: (value) => text = value,
+                    maxLength: null,
+                    maxLines: null,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                      fillColor: Colors.tealAccent.withOpacity(0.5),
+                      filled: true,
+                      labelText: "Write Caption",
+                      labelStyle: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
-                      decoration: InputDecoration(
-                          labelText: "Write Something",
-                          labelStyle: TextStyle(
-                            fontSize: 29,
-                          ),
-                          border: InputBorder.none)),
-                ),
-                imagePath == null
-                    ? Container()
-                    : MediaQuery.of(context).viewInsets.bottom > 0
-                        ? Container()
-                        : Image(
-                            width: 300,
-                            height: 300,
-                            image: FileImage(imagePath),
-                          ),
-              ],
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ],
+              ),
             ),
             floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.publish),
+              backgroundColor: Colors.tealAccent,
+              child: Icon(
+                Icons.publish,
+                color: Colors.black,
+              ),
               onPressed: () => postText(),
             ),
           );

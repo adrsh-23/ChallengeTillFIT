@@ -114,7 +114,11 @@ class _DashboardState extends State<Dashboard> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.tealAccent,
         onPressed: () => Navigator.pushNamed(context, "upload"),
       ),
     );
