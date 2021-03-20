@@ -11,9 +11,7 @@ class NotificationPage extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPage> {
   @override
-  String currentUser;
-  var userStream;
-  var challenges;
+  cancel() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,25 +32,33 @@ class _NotificationPageState extends State<NotificationPage> {
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(challengeDoc['profilePic']),
                   ),
-                  title: Row(
+                  title: Text(
+                    challengeDoc['challengerName'],
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  subtitle: Column(
                     children: [
                       Text(
-                        challengeDoc['challengedName'],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
+                        challengeDoc['challenge'],
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            tAgo
+                                .format(challengeDoc['timeStamp'].toDate())
+                                .toString(),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
                       ),
-                      Text(challengeDoc['challenge'],
-                          style: TextStyle(
-                            color: Colors.white,
-                          )),
+                      MaterialButton(
+                        color: Colors.white,
+                        onPressed: () => cancel(),
+                        child: Text("Decline"),
+                      ),
                     ],
-                  ),
-                  subtitle: Text(
-                    tAgo.format(challengeDoc['timeStamp'].toDate()).toString(),
-                    style: TextStyle(color: Colors.white),
                   ),
                 );
               },
