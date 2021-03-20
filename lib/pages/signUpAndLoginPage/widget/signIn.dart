@@ -176,7 +176,7 @@ class _LogInState extends State<LogIn> {
               ),
               TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'signupPage');
+                    Navigator.pushNamed(context, "signupPage");
                   },
                   child: Text(
                     'Sign Up',

@@ -119,6 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           return Center(child: CircularProgressIndicator());
                         }
                         return ListView.builder(
+                            reverse: true,
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: snapshot.data.docs.length,

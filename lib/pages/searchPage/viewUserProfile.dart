@@ -84,7 +84,13 @@ class _ViewUserPageState extends State<ViewUserPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Text("Friends"),
+                  MaterialButton(
+                    child: Text(
+                      "Challenge this user!",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () => null,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -99,6 +105,7 @@ class _ViewUserPageState extends State<ViewUserPage> {
                           return Center(child: CircularProgressIndicator());
                         }
                         return ListView.builder(
+                            reverse: true,
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: snapshot.data.docs.length,
