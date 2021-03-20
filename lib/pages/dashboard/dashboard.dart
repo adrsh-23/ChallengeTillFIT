@@ -112,6 +112,10 @@ class _DashboardState extends State<Dashboard> {
               });
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => Navigator.pushNamed(context, "upload"),
+      ),
     );
   }
 }

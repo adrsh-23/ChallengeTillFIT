@@ -66,6 +66,7 @@ class _SearchState extends State<Search> {
                                     MaterialPageRoute(
                                         builder: (context) => ViewUserPage(
                                               userId: user['uid'],
+                                              challengedUser: user['username'],
                                             )));
                               }
                             },

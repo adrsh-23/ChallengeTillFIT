@@ -1,3 +1,4 @@
+import 'package:ctf_app/pages/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import './widget/signIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,6 +25,10 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
         });
       }
     });
+  }
+
+  dispose() {
+    super.dispose();
   }
 
   double boxHeight;

@@ -1,10 +1,12 @@
 import 'package:ctf_app/pages/challengeUser/challengeUserPage.dart';
 import 'package:ctf_app/utils/variables.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ViewUserPage extends StatefulWidget {
-  ViewUserPage({this.userId});
+  ViewUserPage({this.userId, this.challengedUser});
+  final String challengedUser;
   final String userId;
   @override
   _ViewUserPageState createState() => _ViewUserPageState();
@@ -13,22 +15,35 @@ class ViewUserPage extends StatefulWidget {
 class _ViewUserPageState extends State<ViewUserPage> {
   String username;
   String profilePic = '';
-  bool dataPresent = false;
+  bool dataPresent1 = false;
+  bool dataPresent2 = false;
+  String currUsername;
+  String currProfilePic;
   var userStream;
   initState() {
     super.initState();
     setState(() {
       userStream = userPosts.where('uid', isEqualTo: widget.userId).snapshots();
     });
-    getCurrentUserInfo();
+    getNewUserInfo();
   }
 
-  getCurrentUserInfo() async {
+  getNewUserInfo() async {
+    int count = 0;
     DocumentSnapshot userDoc = await usersCollection.doc(widget.userId).get();
     setState(() {
       username = userDoc['username'];
       profilePic = userDoc['profilePic'];
-      dataPresent = true;
+      dataPresent1 = true;
+      print(username);
+    });
+    var firebaseUser = FirebaseAuth.instance.currentUser;
+    DocumentSnapshot userDocument =
+        await usersCollection.doc(firebaseUser.uid).get();
+    setState(() {
+      currUsername = userDocument['username'];
+      currProfilePic = userDocument['profilePic'];
+      dataPresent2 = true;
     });
   }
 
@@ -51,7 +66,7 @@ class _ViewUserPageState extends State<ViewUserPage> {
           onTap: () => Navigator.pop(context),
         ),
       ),
-      body: dataPresent
+      body: dataPresent1 & dataPresent2
           ? SingleChildScrollView(
               child: Column(
                 children: [
@@ -94,6 +109,9 @@ class _ViewUserPageState extends State<ViewUserPage> {
                       MaterialPageRoute(
                         builder: (BuildContext context) => ChallengeUser(
                           userId: widget.userId,
+                          challengedName: widget.challengedUser,
+                          profilePic: currProfilePic,
+                          username: currUsername,
                         ),
                       ),
                     ),

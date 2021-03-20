@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _Page = <Widget>[
     Dashboard(),
     Search(),
-    UploadandChallenge(),
     NotificationPage(),
     ProfilePage(),
   ];
@@ -53,15 +52,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.tealAccent,
               size: 30,
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-              color: Colors.tealAccent,
-              size: 30,
-            ),
-            label: 'add',
+            label: 'search',
           ),
           BottomNavigationBarItem(
             icon: Icon(
