@@ -27,7 +27,7 @@ class _LogInState extends State<LogIn> {
       } else {
         setState(() {
           // invalid = false;
-          Navigator.pushNamed(context, "homePage");
+          Navigator.popAndPushNamed(context, "homePage");
         });
       }
     });
@@ -129,7 +129,9 @@ class _LogInState extends State<LogIn> {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                loginUser();
+              },
               child: Container(
                 child: Text(
                   'Login',
