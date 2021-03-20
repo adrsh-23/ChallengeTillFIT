@@ -29,9 +29,12 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("YOLO"),
+        title: Text(
+          "Home",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
-        leading: Icon(Icons.food_bank),
+        backgroundColor: Colors.tealAccent,
       ),
       body: StreamBuilder(
         stream: userPosts.snapshots(),
@@ -41,58 +44,68 @@ class _DashboardState extends State<Dashboard> {
           }
           return ListView.builder(
               itemCount: snapshot.data.docs.length,
-              reverse: true,
               itemBuilder: (BuildContext context, int index) {
                 DocumentSnapshot userData = snapshot.data.docs[index];
+
                 return Card(
-                  child: ListTile(
-                    title: Text(
-                      userData['username'],
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    leading: CircleAvatar(
-                      backgroundImage: getImage(userData['profilePic']),
-                    ),
-                    subtitle: Column(
-                      children: [
-                        if (userData['type'] == 1)
-                          Text(userData['text'],
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold)),
-                        if (userData['text'] == 2)
-                          Image(
+                  color: Colors.tealAccent.withOpacity(0.5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        tileColor: Colors.transparent,
+                        title: Text(
+                          userData['username'],
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        leading: CircleAvatar(
+                          backgroundImage: getImage(userData['profilePic']),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      if (userData['type'] == 1 || userData['type'] == 3)
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            userData['text'],
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      if (userData['type'] == 2 || userData['type'] == 3)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image(
                             image: getImage(userData['image']),
                           ),
-                        if (userData['type'] == 3)
-                          Column(
-                            children: [
-                              Text(userData['text'],
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
-                              Image(
-                                image: getImage(userData['image']),
-                              ),
-                            ],
-                          ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
+                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(
                               tAgo
                                   .format(userData['timeStamp'].toDate())
                                   .toString(),
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.grey[300]),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 );
               });

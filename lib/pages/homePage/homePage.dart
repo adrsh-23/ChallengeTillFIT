@@ -37,11 +37,12 @@ class _HomePageState extends State<HomePage> {
         onTap: changePage,
         type: BottomNavigationBarType.shifting,
         showUnselectedLabels: false,
+        backgroundColor: Colors.red,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Colors.grey,
+              color: Colors.tealAccent,
               size: 30,
             ),
             label: 'Home',
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: Colors.grey,
+              color: Colors.tealAccent,
               size: 30,
             ),
             label: 'Home',
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add,
-              color: Colors.grey,
+              color: Colors.tealAccent,
               size: 30,
             ),
             label: 'add',
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.notifications_active_outlined,
-              color: Colors.grey,
+              color: Colors.tealAccent,
               size: 30,
             ),
             label: 'notification',
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: Colors.grey,
+              color: Colors.tealAccent,
               size: 30,
             ),
             label: 'profile',
