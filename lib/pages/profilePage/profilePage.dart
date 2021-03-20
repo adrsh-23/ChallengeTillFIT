@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 2 * MediaQuery.of(context).size.height / 5,
+                        height: MediaQuery.of(context).size.height / 3,
                         color: Colors.tealAccent,
                       ),
                       Column(
@@ -94,22 +94,22 @@ class _ProfilePageState extends State<ProfilePage> {
                           SizedBox(
                             height: 10,
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: 1,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "User Accomplishments",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
                         ],
                       )
                     ],
+                  ),
+                  Card(
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      alignment: Alignment.center,
+                      color: Colors.tealAccent,
+                      child: Text(
+                        "User Accomplishments",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                   StreamBuilder(
                       stream: userStream,
