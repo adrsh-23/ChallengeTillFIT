@@ -11,8 +11,6 @@ class NotificationPage extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPage> {
   @override
-  cancel() {}
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
@@ -55,7 +53,13 @@ class _NotificationPageState extends State<NotificationPage> {
                       ),
                       MaterialButton(
                         color: Colors.white,
-                        onPressed: () => cancel(),
+                        onPressed: () async {
+                          await FirebaseFirestore.instance.runTransaction(
+                              (Transaction myTransaction) async {
+                            myTransaction
+                                .delete(snapshots.data.docs[index].reference);
+                          });
+                        },
                         child: Text("Decline"),
                       ),
                     ],
