@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(canvasColor: Color.fromRGBO(0, 16, 48, 1)),
       routes: {
         "loginPage": (context) => Login(),

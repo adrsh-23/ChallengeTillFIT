@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import './signInButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LogIn extends StatefulWidget {
@@ -71,15 +69,27 @@ class _LogInState extends State<LogIn> {
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       width: double.infinity,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Login',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 35,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            'Please Sign in to continue',
+            style: TextStyle(
+              color: Colors.grey[600],
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           TextField(
             cursorColor: Colors.white,
@@ -155,9 +165,6 @@ class _LogInState extends State<LogIn> {
                   style: TextStyle(color: Colors.red),
                 ),
             ]),
-          SizedBox(
-            height: 5,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -166,7 +173,9 @@ class _LogInState extends State<LogIn> {
                 style: TextStyle(color: Colors.white),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'signupPage');
+                  },
                   child: Text(
                     'Sign Up',
                     style: TextStyle(color: Colors.tealAccent),

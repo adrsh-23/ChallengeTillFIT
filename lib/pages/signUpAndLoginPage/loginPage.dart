@@ -10,21 +10,21 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> with TickerProviderStateMixin {
   bool isSignedIn = false;
 
-  // void initState() {
-  //   super.initState();
+  void initState() {
+    super.initState();
 
-  //   FirebaseAuth.instance.authStateChanges().listen((user) {
-  //     if (user != null) {
-  //       setState(() {
-  //         isSignedIn = true;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         isSignedIn = false;
-  //       });
-  //     }
-  //   });
-  // }
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user != null) {
+        setState(() {
+          isSignedIn = true;
+        });
+      } else {
+        setState(() {
+          isSignedIn = false;
+        });
+      }
+    });
+  }
 
   double boxHeight;
   double bottomHeight() {
