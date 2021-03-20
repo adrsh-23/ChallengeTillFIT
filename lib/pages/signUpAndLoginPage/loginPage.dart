@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './widget/logo.dart';
 import './widget/signIn.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,21 +10,21 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> with TickerProviderStateMixin {
   bool isSignedIn = false;
 
-  void initState() {
-    super.initState();
+  // void initState() {
+  //   super.initState();
 
-    FirebaseAuth.instance.authStateChanges().listen((user) {
-      if (user != null) {
-        setState(() {
-          isSignedIn = true;
-        });
-      } else {
-        setState(() {
-          isSignedIn = false;
-        });
-      }
-    });
-  }
+  //   FirebaseAuth.instance.authStateChanges().listen((user) {
+  //     if (user != null) {
+  //       setState(() {
+  //         isSignedIn = true;
+  //       });
+  //     } else {
+  //       setState(() {
+  //         isSignedIn = false;
+  //       });
+  //     }
+  //   });
+  // }
 
   double boxHeight;
   double bottomHeight() {
@@ -45,24 +44,18 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              logo(),
+              Text(
+                'CTF',
+                style: TextStyle(
+                  color: Colors.tealAccent,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
               LogIn(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text("Don't have an account? "),
-              //     GestureDetector(
-              //       onTap: () => Navigator.pushNamed(context, "signUp"),
-              //       child: Text(
-              //         "Sign Up",
-              //         style: TextStyle(color: Colors.blue),
-              //       ),
-              //     )
-              //   ],
-
               SizedBox(
                 height: 10,
               )

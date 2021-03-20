@@ -1,4 +1,3 @@
-import 'package:ctf_app/pages/signUpAndLoginPage/function/inputFieldDecorate.dart';
 import 'package:ctf_app/pages/signUpAndLoginPage/widget/signInButton.dart';
 import 'package:ctf_app/utils/variables.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class _SignUpInputState extends State<SignUpInput> {
             height: 10,
           ),
           TextField(
-            decoration: inputFieldDecorate("Username"),
+            // decoration: inputFieldDecorate("Username"),
             autocorrect: false,
             onChanged: (value) => username = value,
           ),
@@ -51,7 +50,7 @@ class _SignUpInputState extends State<SignUpInput> {
             height: 10,
           ),
           TextField(
-            decoration: inputFieldDecorate("Email"),
+            // decoration: inputFieldDecorate("Email"),
             keyboardType: TextInputType.emailAddress,
             onChanged: (value) => email = value,
           ),
@@ -59,7 +58,7 @@ class _SignUpInputState extends State<SignUpInput> {
             height: 10,
           ),
           TextField(
-            decoration: inputFieldDecorate("Password"),
+            // decoration: inputFieldDecorate("Password"),
             obscureText: true,
             onChanged: (value) => password = value,
           ),

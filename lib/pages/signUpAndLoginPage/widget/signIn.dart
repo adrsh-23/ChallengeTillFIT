@@ -1,6 +1,5 @@
-import 'package:ctf_app/pages/signUpAndLoginPage/function/inputFieldDecorate.dart';
 import 'package:flutter/material.dart';
-import './forgotButton.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import './signInButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -36,6 +35,36 @@ class _LogInState extends State<LogIn> {
     });
   }
 
+  FocusNode _emailTextFieldFocus = FocusNode();
+  FocusNode _passwordTextFieldFocus = FocusNode();
+  Color _emailBgColor = Colors.transparent,
+      _passwordBgColor = Colors.transparent;
+  void initState() {
+    _emailTextFieldFocus.addListener(() {
+      if (_emailTextFieldFocus.hasFocus) {
+        setState(() {
+          _emailBgColor = Color.fromRGBO(255, 255, 255, 0.1);
+        });
+      } else {
+        setState(() {
+          _emailBgColor = Colors.transparent;
+        });
+      }
+    });
+    _passwordTextFieldFocus.addListener(() {
+      if (_passwordTextFieldFocus.hasFocus) {
+        setState(() {
+          _passwordBgColor = Color.fromRGBO(255, 255, 255, 0.1);
+        });
+      } else {
+        setState(() {
+          _passwordBgColor = Colors.transparent;
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,28 +73,74 @@ class _LogInState extends State<LogIn> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          Text(
+            'Login',
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           TextField(
-            decoration: inputFieldDecorate('Email'),
+            cursorColor: Colors.white,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+            decoration: InputDecoration(
+              fillColor: _emailBgColor,
+              filled: true,
+              border: InputBorder.none,
+              labelText: 'Email',
+              labelStyle: TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            focusNode: _emailTextFieldFocus,
             onChanged: (value) => email = value,
           ),
           SizedBox(
             height: 20,
           ),
           TextField(
-            decoration: inputFieldDecorate('Password'),
+            style: TextStyle(fontSize: 20, color: Colors.white),
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              fillColor: _passwordBgColor,
+              filled: true,
+              border: InputBorder.none,
+              labelText: 'Password',
+              labelStyle: TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            focusNode: _passwordTextFieldFocus,
             onChanged: (value) => password = value,
             obscureText: true,
           ),
-          ForgotButton(),
           SizedBox(
             height: 10,
           ),
-          LogInButton(
-            label: "Login",
-            onPressed: () => loginUser(),
-          ),
           SizedBox(
-            height: 5,
+            height: 10,
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Container(
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              ),
+              style: ButtonStyle(
+                shape: MaterialStateProperty.resolveWith(
+                  (states) => RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.resolveWith(
+                    (states) => Colors.tealAccent),
+              ),
+            ),
           ),
           if (error.isNotEmpty)
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -86,14 +161,16 @@ class _LogInState extends State<LogIn> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Don't have an account? "),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "signUp"),
-                child: Text(
-                  "Sign Up",
-                  style: TextStyle(color: Colors.blue),
-                ),
-              )
+              Text(
+                "Don't have an account? ",
+                style: TextStyle(color: Colors.white),
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(color: Colors.tealAccent),
+                  ))
             ],
           ),
         ],
