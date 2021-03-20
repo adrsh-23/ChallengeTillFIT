@@ -41,30 +41,45 @@ class _ChallengeUserState extends State<ChallengeUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Challenge Now!"),
+        title: Text(
+          "Challenge Now!",
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: Expanded(
-          child: TextField(
-              onChanged: (value) => text = value,
-              maxLength: null,
-              maxLines: null,
-              style: TextStyle(
-                fontSize: 24,
-              ),
-              decoration: InputDecoration(
-                  labelText: "Write Something",
-                  labelStyle: TextStyle(
-                    fontSize: 29,
-                  ),
-                  border: InputBorder.none)),
+        backgroundColor: Colors.tealAccent,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
       ),
+      body: Container(
+        padding: EdgeInsets.all(5),
+        width: double.infinity,
+        child: TextField(
+            onChanged: (value) => text = value,
+            maxLength: null,
+            maxLines: null,
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.black,
+            ),
+            cursorColor: Colors.black,
+            decoration: InputDecoration(
+                labelText: "Write Your Challenge",
+                fillColor: Colors.tealAccent.withOpacity(0.7),
+                filled: true,
+                labelStyle: TextStyle(
+                  fontSize: 29,
+                  color: Colors.black,
+                ),
+                border: InputBorder.none)),
+      ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.publish),
+        backgroundColor: Colors.tealAccent,
+        child: Icon(Icons.publish, color: Colors.black),
         onPressed: () => postChallenge(),
       ),
     );

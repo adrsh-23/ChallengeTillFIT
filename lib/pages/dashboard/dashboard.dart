@@ -30,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Home",
+          "CTF",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         leading: Container(),
