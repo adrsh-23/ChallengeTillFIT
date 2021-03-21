@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="250" height="150" src="https://github.com/adrsh-23/ChallengeTillFIT/blob/Dev/assets/logo.PNG">
+</p>
+
 # ChallengeTillFIT
 
 ### Simple and elegant social app to maintain your healthy lifestyle.!
@@ -34,14 +38,14 @@
 ## Challenges We Faced
 
   *  In order to connect to the backend i.e Firebase we had to provide the sha-256 but due to internal error we had to switch to traditional login and signup instead of google sign up.
-  *  The overall responsiveness of the app had to be handled due to multiple devices being used to debug
-  *  Data from the firebase was not being retrieved due to firestore rules being different
-  *  Multiple Flutter packages were causing inter-dependancy issues 
-  *  Sign up page was first loading the homepage rather than signing in first
-  *  Data being retrived late due to poor internet connectivity caused null error
-  *  Notifications page had to be refreshed in order for new notifications to be shown
-  *  Pixels overflow in profile and dashboard page
-  *  In order to accept the users challenge, the document's id was not being retrieved causing this feature to bug out.
+  *  The overall responsiveness of the app had to be handled due to multiple devices being used to debug (Used Media query in order for responsiveness)
+  *  Data from the firebase was not being retrieved due to firestore rules being different (changed firestore rules i.e if auth.user!=null access granted)
+  *  Multiple Flutter packages were causing inter-dependancy issues (Tried each package combination to get the optimal versioning)
+  *  Sign up page was first loading the homepage rather than signing in first (asynchronous function was used)
+  *  Data being retrived late due to poor internet connectivity caused null error (added circular progress indicator)
+  *  Notifications page had to be refreshed in order for new notifications to be shown (Stream builder was used which dynamically checks for updates)
+  *  Pixels overflow in profile and dashboard page (Media Query Used)
+  *  In order to accept the users challenge, the document's id was not being retrieved causing this feature to bug out. (Current index of the listview was used in order to execute the complete function)
 
 
 ## Technologies Used
