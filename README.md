@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" height="150" src="https://github.com/adrsh-23/ChallengeTillFIT/blob/Dev/assets/logo.PNG">
+  <img width="300" height="150" src="https://github.com/adrsh-23/ChallengeTillFIT/blob/Dev/assets/logo.PNG">
 </p>
 
 # ChallengeTillFIT
