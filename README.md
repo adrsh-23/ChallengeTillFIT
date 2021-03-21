@@ -1,16 +1,55 @@
-# ctf_app
+# ChallengeTillFIT
 
-A new Flutter project.
+### Simple and elegant social app to maintain your healthy lifestyle.!
 
-## Getting Started
+## Tracks
+  * Social Good
+  * Fun and Entertainment
+  * Open Innovation
 
-This project is a starting point for a Flutter application.
+## Problem it Solves
+  Health is defined as a state of physical, mental, and social well being and not merely physical well being.
+  Health and fitness go hand in hand but with this fast moving world people are becoming more and more ignorant towards fitness and health.
 
-A few resources to get you started if this is your first Flutter project:
+  Our app is our initiative to again make this society fit and promote good deeds in society in a very fun and exciting way.
+  It is a social media app where user can challenge  other users to perform challenges that can bring a positive change in their life and to the people around them.
+  The main crisp of adding challenges in this app is to make people compete with each other in order to maintain their health.
+  
+  ```
+  competing + health + friends = FUN 
+  ```
+  
+  Through this app people can share their day to day activities they do which in turn achieves them a fit and healthy lifestyle.
+  It also spreads awareness about health, well being, fitness , care towards nature and fellow beings.
+  The major goal of our app is to tell the people that even a small step today can lead to a happy and healthy tomorrow. 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Features
+  * Provides features like Social Media app
+  * User can challenge other users 
+  * User can post their accomplishments and good deeds
+  * Standard Login/SignUp 
+  * Users can search globally other users
+  * Easy UI/UX
+  
+## Challenges We Faced
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  *  In order to connect to the backend i.e Firebase we had to provide the sha-256 but due to internal error we had to switch to traditional login and signup instead of google sign up.
+  *  The overall responsiveness of the app had to be handled due to multiple devices being used to debug
+  *  Data from the firebase was not being retrieved due to firestore rules being different
+  *  Multiple Flutter packages were causing inter-dependancy issues 
+  *  Sign up page was first loading the homepage rather than signing in first
+  *  Data being retrived late due to poor internet connectivity caused null error
+  *  Notifications page had to be refreshed in order for new notifications to be shown
+  *  Pixels overflow in profile and dashboard page
+  *  In order to accept the users challenge, the document's id was not being retrieved causing this feature to bug out.
+
+
+## Technologies Used
+  * Flutter
+  * Dart
+  * Firebase
+  * Android Studio
+  * Git
+
+## App Demo Link
+####  [Click Here!](https://drive.google.com/file/d/1ocmutfSGEnEuONXqmM4BuM1DAKNDzl_n/view?usp=sharing)
