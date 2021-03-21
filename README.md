@@ -6,6 +6,10 @@
 
 ### Simple and elegant social app to maintain your healthy lifestyle.!
 
+## App Demo Link
+####  [Click Here!](https://drive.google.com/file/d/1ocmutfSGEnEuONXqmM4BuM1DAKNDzl_n/view?usp=sharing)
+
+
 ## Tracks
   * Social Good
   * Fun and Entertainment
@@ -55,5 +59,4 @@
   * Android Studio
   * Git
 
-## App Demo Link
-####  [Click Here!](https://drive.google.com/file/d/1ocmutfSGEnEuONXqmM4BuM1DAKNDzl_n/view?usp=sharing)
+
