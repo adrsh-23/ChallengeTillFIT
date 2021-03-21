@@ -76,7 +76,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         });
                       },
                       child: Text(
-                        "Decline",
+                        "Done",
                         style: TextStyle(
                           color: Colors.tealAccent,
                         ),
