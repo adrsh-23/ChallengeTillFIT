@@ -9,12 +9,6 @@
 ## App Demo Link
 ####  [Click Here!](https://drive.google.com/file/d/1ocmutfSGEnEuONXqmM4BuM1DAKNDzl_n/view?usp=sharing)
 
-
-## Tracks
-  * Social Good
-  * Fun and Entertainment
-  * Open Innovation
-
 ## Problem it Solves
   Health is defined as a state of physical, mental, and social well being and not merely physical well being.
   Health and fitness go hand in hand but with this fast moving world people are becoming more and more ignorant towards fitness and health.
